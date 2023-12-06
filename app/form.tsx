@@ -12,7 +12,7 @@ interface Props {
 export const Form: React.FC<Props> = ({ transformUrlToCode }) => {
 	return (
 		<form
-			action=""
+			className="flex flex-col gap-4"
 			onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
 				event.preventDefault()
 

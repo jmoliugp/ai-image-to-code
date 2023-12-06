@@ -12,7 +12,7 @@ export default function Home() {
 			},
 		})
 
-		if (res.ok || res.body === null) {
+		if (!res.ok || res.body === null) {
 			throw new Error('Error generating the code')
 		}
 
@@ -30,7 +30,7 @@ export default function Home() {
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
 			<aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
-				<header>
+				<header className="text-center">
 					<h1 className="text-3xl font-semibold">Image to code</h1>
 					<h2 className="text-sm opacity-75">Convert your images to code in seconds</h2>
 				</header>
@@ -39,8 +39,9 @@ export default function Home() {
 
 				<footer>Developed by Solo</footer>
 			</aside>
+
 			<main className="bg-gray-950">
-				<section className="max-w-2xl mx-auto p-10">
+				<section className="max-w-5xl w-full mx-auto p-10">
 					<div className="flex flex-col gap-10">
 						<Form transformUrlToCode={transformUrlToCode} />
 					</div>

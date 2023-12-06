@@ -38,6 +38,7 @@ export async function POST(req: Request) {
 	const response = await openai.chat.completions.create({
 		model: 'gpt-4-vision-preview',
 		stream: true,
+		max_tokens: 4096,
 		messages: [
 			{
 				role: 'system',
