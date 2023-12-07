@@ -14,6 +14,19 @@ enum Step {
 	Error = 'Error',
 }
 
+async function* streamReader(res: Response) {
+	const reader = res.body?.getReader()
+	const decoder = new TextDecoder()
+	if (reader == null) return
+
+	while (true) {
+		const { done, value } = await reader?.read()
+		const chunk = decoder.decode(value)
+		yield chunk
+		if (done) break
+	}
+}
+
 export default function Home() {
 	const [result, setResult] = useState('')
 	const [step, setStep] = useState<Step>(Step.Initial)
@@ -35,16 +48,8 @@ export default function Home() {
 
 		setStep(Step.Preview)
 
-		const reader = res.body.getReader()
-		const decoder = new TextDecoder()
-
-		while (true) {
-			const { done, value } = await reader.read()
-			const chunk = decoder.decode(value)
-
+		for await (const chunk of streamReader(res)) {
 			setResult((prev) => prev + chunk)
-
-			if (done) break
 		}
 	}
 
@@ -63,7 +68,11 @@ export default function Home() {
 
 			<main className="bg-gray-950">
 				<section className="max-w-5xl w-full mx-auto p-10">
-					{step === Step.Loading && <Spinner />}
+					{step === Step.Loading && (
+						<div className="flex justify-center items-center h-full">
+							<Spinner />
+						</div>
+					)}
 					{step === Step.Preview && (
 						<div className="rounded flex flex-col gap-4">
 							<iframe srcDoc={result} className="w-full h-full border-4 rounded border-gray-700 aspect-video" />
