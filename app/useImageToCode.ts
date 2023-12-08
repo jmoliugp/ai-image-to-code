@@ -65,10 +65,13 @@ export const useImageToCode = () => {
     transformToCode(JSON.stringify({ url }))
   }
 
+  const [background, html = ''] = result.split('|||')
+
   return {
     genCodeFromImage,
     genCodeFromUrl,
-    result,
+    background,
+    html,
     step,
   }
 }
