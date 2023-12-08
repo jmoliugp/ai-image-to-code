@@ -9,7 +9,7 @@ import { DragAndDrop } from '@/components/ui/dragAndDrop'
 import { Spinner } from '@/components/ui/spinner'
 
 export default function Home() {
-  const { genCodeFromImage, genCodeFromUrl, result, step } = useImageToCode()
+  const { genCodeFromImage, genCodeFromUrl, background, html, step } = useImageToCode()
 
   return (
     <div className="grid grid-cols-[400px_1fr]">
@@ -33,7 +33,15 @@ export default function Home() {
           )}
           {step === Step.Preview && (
             <div className="rounded flex flex-col gap-4">
-              <iframe srcDoc={result} className="w-full h-full border-4 rounded border-gray-700 aspect-video" />
+              <div
+                className="w-full h-full border-4 rounded border-gray-700 aspect-video"
+                style={{ backgroundColor: `#${background ? background.trim() : 'fff'}` }}
+              >
+                <iframe srcDoc={html} className="w-full h-full" />
+              </div>
+              <pre className="pt-10">
+                <code>{html}</code>
+              </pre>
             </div>
           )}
           {step === Step.Initial && (
