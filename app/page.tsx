@@ -3,47 +3,29 @@
 // IG test screenshot
 // https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2023/01/instagram-notes-2942288.jpg?tf=2048x
 
+import Image from 'next/image'
 import { Form } from '@/app/form'
 import { Step, useImageToCode } from '@/app/useImageToCode'
 import { DragAndDrop } from '@/components/ui/dragAndDrop'
 import { Spinner } from '@/components/ui/spinner'
+import Head from 'next/head'
+import { spaceGrotesk, spaceMono, spaceMonoBold } from '@/app/ui/fonts'
 
 export default function Home() {
   const { genCodeFromImage, genCodeFromUrl, result, step } = useImageToCode()
 
   return (
-    <div className="grid grid-cols-[400px_1fr]">
-      <aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
-        <header className="text-center">
-          <h1 className="text-3xl font-semibold">Image to code</h1>
-          <h2 className="text-sm opacity-75">Convert your images to code in seconds</h2>
-        </header>
-
-        <section>{/*filters*/}</section>
-
-        <footer>Developed by Solo</footer>
-      </aside>
-
-      <main className="bg-gray-950">
-        <section className="max-w-5xl w-full mx-auto p-10">
-          {step === Step.Loading && (
-            <div className="flex justify-center items-center h-full">
-              <Spinner />
-            </div>
-          )}
-          {step === Step.Preview && (
-            <div className="rounded flex flex-col gap-4">
-              <iframe srcDoc={result} className="w-full h-full border-4 rounded border-gray-700 aspect-video" />
-            </div>
-          )}
-          {step === Step.Initial && (
-            <div className="flex flex-col gap-10">
-              <DragAndDrop transformImageToCode={genCodeFromImage} />
-              <Form transformUrlToCode={genCodeFromUrl} />
-            </div>
-          )}
-        </section>
-      </main>
+    <div className="flex flex-col items-center justify-center min-h-screen h-full relative bg-stone-800">
+      <div className="flex flex-row left-[771px] top-[276px] mb-20 text-center ">
+        <h1 className={`${spaceMonoBold.className}`}>IMAGE</h1>
+        <h1 className={`${spaceMono.className}`}>TO</h1>
+        <h1 className={`${spaceMonoBold.className}`}>CODE</h1>
+      </div>
+      <div className="flex flex-col justify-center items-center w-auto h-52 px-28 py-10 rounded-2xl border-dashed border-4 border-stone-600 gap-10 mb-40 ">
+        <Image src="/click.svg" alt="pointer" width={30} height={30} priority />
+        <p className={`${spaceGrotesk.className} w-52`}>Drag and drop your image, or click to select one.</p>
+      </div>
+      <h2 className={`${spaceGrotesk.className} `}>Developed by Solo</h2>
     </div>
   )
 }
