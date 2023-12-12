@@ -74,17 +74,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer base {
-  h1 {
-    @apply text-stone-600 text-2xl font-bold tracking-widest;
-  }
-
-  h2 {
-    @apply text-stone-600 align-bottom text-center text-lg font-normal;
-  }
-
-  p {
-    @apply text-center text-stone-200;
-  }
-}
