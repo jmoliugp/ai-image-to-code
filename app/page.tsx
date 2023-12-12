@@ -10,6 +10,7 @@ import { DragAndDrop } from '@/components/ui/dragAndDrop'
 import { Spinner } from '@/components/ui/spinner'
 import Head from 'next/head'
 import { spaceGrotesk, spaceMono, spaceMonoBold } from '@/app/ui/fonts'
+import { Dropzone } from '@/components/ui/dropzone'
 
 export default function Home() {
   const { genCodeFromImage, genCodeFromUrl, result, step } = useImageToCode()
@@ -21,10 +22,8 @@ export default function Home() {
         <h1 className={`${spaceMono.className}`}>TO</h1>
         <h1 className={`${spaceMonoBold.className}`}>CODE</h1>
       </div>
-      <div className="flex flex-col justify-center items-center w-auto h-52 px-28 py-10 rounded-2xl border-dashed border-4 border-stone-600 gap-10 mb-40 ">
-        <Image src="/click.svg" alt="pointer" width={30} height={30} priority />
-        <p className={`${spaceGrotesk.className} w-52`}>Drag and drop your image, or click to select one.</p>
-      </div>
+
+      <Dropzone />
       <h2 className={`${spaceGrotesk.className} `}>Developed by Solo</h2>
     </div>
   )
