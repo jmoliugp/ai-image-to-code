@@ -3,6 +3,7 @@
 import { useImageToCodeContext } from '@/app/providers/codeGenProvider'
 import { typography } from '@/app/ui/fonts'
 import { ClickableIcon } from '@/components/ui/clickableIcon'
+import { CopyToClipboard } from '@/components/ui/codePreview/copyToClipboard'
 import LikePanel from '@/components/ui/codePreview/likePanel'
 import Image from 'next/image'
 
@@ -30,10 +31,7 @@ export default function Preview() {
         <footer className="w-full self-end flex-row inline-flex justify-between content-between">
           <LikePanel />
           <div className="flex-row  items-center inline-flex gap-4">
-            <div className="flex-row inline-flex gap-1 justify-start">
-              <ClickableIcon iconAlt="copy-to-clipboard" iconSrc="/copy.svg" onClick={onClick} />
-              <p className={`${typography.p} text-2xl ml-2`}>Copy code</p>
-            </div>
+            <CopyToClipboard code={htmlGenerated} />
             <div className="flex-row inline-flex gap-1 justify-start">
               <ClickableIcon iconAlt="regenerate" iconSrc="/revert.svg" onClick={onClick} />
               <p className={`${typography.p} text-2xl ml-2`}>Regenerate</p>
