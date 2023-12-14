@@ -2,7 +2,7 @@ import { useImageToCodeContext } from '@/app/providers/codeGenProvider'
 import { spaceGrotesk } from '@/app/ui/fonts'
 import clsx from 'clsx'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDropzone } from 'react-dropzone'
 import styles from './dropzone.module.css'
 
@@ -33,12 +33,13 @@ export const Dropzone: React.FC<Props> = ({ isDragActive }) => {
       'shadow-stone-600/70': isDragActive,
       'shadow-lg': isDragActive,
       [styles.animateExpand]: isDragActive,
+      [styles.animateMinimize]: !isDragActive,
     },
   )
   const dragMsg = isDragActive ? DROP_MSG_HOVER : DROP_MSG
 
   return (
-    <div {...getRootProps()} className={classNameContainer}>
+    <div {...getRootProps()} className={`${classNameContainer} neon-button neon-button__2`}>
       <input {...getInputProps()} />
       <div className="flex-1">
         <Image className="mx-auto" src="/click.svg" alt="pointer" width={30} height={30} priority />
