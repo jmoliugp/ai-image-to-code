@@ -1,12 +1,11 @@
-<svg id="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-      }
-    </style>
-  </defs>
-  <rect x="2" y="2" width="5" height="14"/>
-  <path d="M23,2H9V16.8027l3.0422,4.5635.8453,5.9165A2.0094,2.0094,0,0,0,14.8672,29H15a3.0033,3.0033,0,0,0,3-3V20h8a4.0045,4.0045,0,0,0,4-4V9A7.0078,7.0078,0,0,0,23,2Z"/>
-  <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_117_48)">
+<path d="M7 2H2V16H7V2Z" fill="#EDECE6"/>
+<path d="M23 2H9V16.8027L12.0422 21.3662L12.8875 27.2827C12.9574 27.7585 13.1956 28.1934 13.5589 28.5085C13.9221 28.8236 14.3863 28.998 14.8672 29H15C15.7954 28.9991 16.5579 28.6828 17.1204 28.1204C17.6828 27.5579 17.9991 26.7954 18 26V20H26C27.0605 19.9988 28.0772 19.577 28.8271 18.8271C29.577 18.0772 29.9988 17.0605 30 16V9C29.9979 7.14412 29.2598 5.36484 27.9475 4.05253C26.6352 2.74023 24.8559 2.00206 23 2Z" fill="#EDECE6"/>
+</g>
+<defs>
+<clipPath id="clip0_117_48">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
 </svg>
