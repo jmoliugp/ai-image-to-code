@@ -1,10 +1,11 @@
 import { useImageToCode } from '@/app/useImageToCode'
-import React, { ReactNode, createContext, useContext, useState } from 'react'
+import React, { ReactNode, createContext, useContext } from 'react'
 
 export interface Context {
   cancelRequest: () => void
   genCodeFromImage: (file: File) => Promise<void>
   htmlGenerated: string
+  isStreaming: boolean
   step: Step
 }
 
@@ -19,7 +20,7 @@ const ImageToCodeContext = createContext<Context>({} as Context)
 export const useImageToCodeContext = () => useContext(ImageToCodeContext)
 
 export const CodeGenProvider: React.FC<{ children?: ReactNode | undefined }> = ({ children }) => {
-  const { genCodeFromImage, result, step, cancelRequest } = useImageToCode()
+  const { genCodeFromImage, isStreaming, result, step, cancelRequest } = useImageToCode()
   const htmlGenerated = result
 
   return (
@@ -27,6 +28,7 @@ export const CodeGenProvider: React.FC<{ children?: ReactNode | undefined }> = (
       value={{
         cancelRequest,
         genCodeFromImage,
+        isStreaming,
         htmlGenerated,
         step,
       }}
