@@ -2,16 +2,13 @@
 
 import { useImageToCodeContext } from '@/app/providers/codeGenProvider'
 import { typography } from '@/app/ui/fonts'
-import { ClickableIcon } from '@/components/ui/clickableIcon'
 import { CopyToClipboard } from '@/components/ui/codePreview/copyToClipboard'
 import LikePanel from '@/components/ui/codePreview/likePanel'
+import { Regenerate } from '@/components/ui/codePreview/regenerate'
 import Image from 'next/image'
 
 export default function Preview() {
-  const { htmlGenerated, cancelRequest } = useImageToCodeContext()
-  const isStreaming = false
-
-  const onClick = () => console.log('## CLICK')
+  const { htmlGenerated, cancelRequest, isStreaming } = useImageToCodeContext()
 
   return (
     <div className="flex flex-col flex-grow w-screen justify-center items-center px-56 gap-7">
@@ -32,10 +29,7 @@ export default function Preview() {
           <LikePanel />
           <div className="flex-row  items-center inline-flex gap-4">
             <CopyToClipboard code={htmlGenerated} />
-            <div className="flex-row inline-flex gap-1 justify-start">
-              <ClickableIcon iconAlt="regenerate" iconSrc="/revert.svg" onClick={onClick} />
-              <p className={`${typography.p} text-2xl ml-2`}>Regenerate</p>
-            </div>
+            {/* <Regenerate /> */}
           </div>
         </footer>
       )}

@@ -1,0 +1,12 @@
+@keyframes expand {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
+}
+
+.animateExpand {
+  animation: expand 0.13s ease-in-out forwards;
+}

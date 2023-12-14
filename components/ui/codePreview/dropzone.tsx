@@ -1,18 +1,22 @@
+import { useImageToCodeContext } from '@/app/providers/codeGenProvider'
+import { typography } from '@/app/ui/fonts'
+import clsx from 'clsx'
+import Image from 'next/image'
 import React from 'react'
 import { useDropzone } from 'react-dropzone'
-import Image from 'next/image'
-import { spaceGrotesk, typography } from '@/app/ui/fonts'
-import clsx from 'clsx'
 
 interface Props {
   transformImageToCode: (file: File) => Promise<void>
 }
 
 export const Dropzone: React.FC<Props> = ({ transformImageToCode }) => {
+  const { setImage } = useImageToCodeContext()
+
   const onDrop = (droppedFiles: File[]) => {
     const file = droppedFiles[0]
     if (file == null) return
 
+    setImage(file)
     transformImageToCode(file)
   }
 
