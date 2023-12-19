@@ -16,27 +16,46 @@ function toBase64(file: File) {
   })
 }
 
-async function* streamReader(res: Response) {
+interface StreamReaderObserver {
+  onStart: () => void
+  onEnd: () => void
+}
+
+async function* streamReader(res: Response, observer: StreamReaderObserver) {
+  observer.onStart()
+
   const reader = res.body?.getReader()
   const decoder = new TextDecoder()
-  if (reader == null) return
+  if (reader == null) {
+    observer.onEnd()
+    return
+  }
 
   while (true) {
-    const { done, value } = await reader?.read()
-    const chunk = decoder.decode(value)
+    const { done, value } = await reader.read()
+    if (done) {
+      observer.onEnd()
+      break
+    }
+    const chunk = decoder.decode(value, { stream: true })
     yield chunk
-    if (done) break
   }
 }
 
 export const useImageToCode = () => {
   const [result, setResult] = useState('')
+  const [isStreaming, setIsStreaming] = useState(false)
   const [step, setStep] = useState<Step>(Step.Initial)
 
   const abortController = new AbortController()
+  const observer: StreamReaderObserver = {
+    onStart: () => setIsStreaming(true),
+    onEnd: () => setIsStreaming(false),
+  }
 
   const transformToCode = async (body: string) => {
     setStep(Step.Loading)
+
     const res = await fetch('api/generate-code-from-image', {
       method: 'POST',
       body,
@@ -53,7 +72,7 @@ export const useImageToCode = () => {
 
     setStep(Step.Preview)
 
-    for await (const chunk of streamReader(res)) {
+    for await (const chunk of streamReader(res, observer)) {
       setResult((prev) => prev + chunk)
     }
   }
@@ -69,12 +88,14 @@ export const useImageToCode = () => {
 
   const cancelRequest = () => {
     abortController.abort()
+    setStep(Step.Initial)
   }
 
   return {
     cancelRequest,
     genCodeFromImage,
     genCodeFromUrl,
+    isStreaming,
     result,
     step,
   }
