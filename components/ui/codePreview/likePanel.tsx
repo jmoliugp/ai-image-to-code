@@ -39,7 +39,7 @@ export default function LikePanel() {
   }
 
   return (
-    <div className="flex-row inline-flex gap-3 justify-start">
+    <div className="w-80 inline-flex gap-3 justify-start">
       <p className={`${typography.p} text-2xl ml-2`}>How well did I do?</p>
       <ClickableIcon iconAlt="thumb-up" iconSrc={thumbUpIcon} onClick={like} />
       <ClickableIcon iconAlt="thumb-down" iconSrc={thumbDownIcon} onClick={disLike} />
