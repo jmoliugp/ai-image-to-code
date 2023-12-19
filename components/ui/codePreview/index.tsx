@@ -17,11 +17,14 @@ export default function CodePreview() {
             <span className="text-stone-600 text-2xl font-normal font-['Space Mono'] tracking-widest">TO</span>
             <span className="text-stone-600 text-2xl font-bold font-['Space Mono'] tracking-widest">CODE</span>
           </div>
-          <div className="text-center text-stone-600 text-lg font-normal font-['Space Grotesk']">Developed by Solo</div>
+          <div className="text-start w-[32vh] text-stone-600 text-lg font-normal font-['Space Grotesk']">
+            Developed by Juan Oliú
+          </div>
         </div>
       </header>
       {step === Step.Loading && <LoadingImage />}
       {step === Step.Preview && <Preview />}
+      {/* <LoadingImage /> */}
     </div>
   )
 }

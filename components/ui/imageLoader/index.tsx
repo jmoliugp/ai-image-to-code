@@ -28,7 +28,7 @@ export default function ImageLoader() {
       </div>
       <Dropzone isDragActive={isDragActive} />
       <footer className="w-screen justify-center items-center flex flex-col">
-        <h3 className={`${typography.h3} ${dragActive}`}>Developed by Solo</h3>
+        <h3 className={`${typography.h3} ${dragActive}`}>Developed by Juan Oliú</h3>
       </footer>
     </div>
   )
