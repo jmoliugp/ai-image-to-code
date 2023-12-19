@@ -13,5 +13,15 @@ export const DragAndDrop: React.FC<Props> = ({ transformImageToCode }) => {
     transformImageToCode(file)
   }
 
-  return <Dropzone header={false} footer={false} maxFiles={1} accept="image/*" onChange={updateFiles} />
+  return (
+    <Dropzone
+      minHeight="120px"
+      width="30px"
+      header={false}
+      footer={false}
+      maxFiles={1}
+      accept="image/*"
+      onChange={updateFiles}
+    />
+  )
 }

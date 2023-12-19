@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 Web Image-to-Code Converter
 
-## Getting Started
+This Next.JS 14 application leverages the cutting-edge capabilities of OpenAI's GPT-4 Turbo with vision to transform website images into functional code. With a focus on efficiency and precision, this tool is designed to revolutionize the web development process.
 
-First, run the development server:
+## 🌟 Features
+
+- **Innovative Image-to-Code Conversion** 🖥️: Utilizes OpenAI's GPT-4 Turbo with vision to accurately convert web designs from images to code.
+- **Optimized Performance** 🚀: Enjoy fast, reliable, and optimized conversions.
+- **User-Friendly Interface** 🖱️: Built with a focus on ease of use for developers and designers alike.
+
+## 🚀 Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### 📋 Prerequisites
+
+What you need to install the software:
+
+- Node.js
+- Yarn Package Manager
+- OpenAI API key
+
+### 💾 Installing
+
+Clone the repository to your local machine:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:jmoliugp/ai-image-to-code.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd ai-image-to-code
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install the dependencies using Yarn:
 
-## Learn More
+```bash
+yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+To start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🖥️ Usage
 
-## Deploy on Vercel
+After starting the development server, the application will be available in your browser. Simply drag and drop a screenshot from a web site, and the application will provide real-time image to code generation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Built With
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.JS 14](https://nextjs.org/) - The web framework used 📚
+- [OpenAI GPT-4 Turbo with vision ](https://openai.com/api/) - Powers the image-to-code conversion 🤖

@@ -33,6 +33,8 @@ export const useImageToCode = () => {
   const [result, setResult] = useState('')
   const [step, setStep] = useState<Step>(Step.Initial)
 
+  const abortController = new AbortController()
+
   const transformToCode = async (body: string) => {
     setStep(Step.Loading)
     const res = await fetch('api/generate-code-from-image', {
@@ -41,10 +43,10 @@ export const useImageToCode = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      signal: abortController.signal,
     })
 
     if (!res.ok || res.body === null) {
-      console.log('🚀 ~ ERROR res:', res)
       setStep(Step.Error)
       throw new Error('Error generating the code')
     }
@@ -65,7 +67,12 @@ export const useImageToCode = () => {
     transformToCode(JSON.stringify({ url }))
   }
 
+  const cancelRequest = () => {
+    abortController.abort()
+  }
+
   return {
+    cancelRequest,
     genCodeFromImage,
     genCodeFromUrl,
     result,
