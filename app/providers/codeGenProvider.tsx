@@ -1,5 +1,5 @@
 import { useImageToCode } from '@/app/useImageToCode'
-import React, { ReactNode, createContext, useContext } from 'react'
+import React, { ReactNode, createContext, useContext, useState } from 'react'
 
 export interface Context {
   cancelRequest: () => void
@@ -7,6 +7,8 @@ export interface Context {
   htmlGenerated: string
   isStreaming: boolean
   step: Step
+  setImage: (image: File | undefined) => void
+  image: File | undefined
 }
 
 export enum Step {
@@ -21,6 +23,7 @@ export const useImageToCodeContext = () => useContext(ImageToCodeContext)
 
 export const CodeGenProvider: React.FC<{ children?: ReactNode | undefined }> = ({ children }) => {
   const { genCodeFromImage, isStreaming, result, step, cancelRequest } = useImageToCode()
+  const [image, setImage] = useState<File | undefined>()
   const htmlGenerated = result
 
   return (
@@ -28,8 +31,10 @@ export const CodeGenProvider: React.FC<{ children?: ReactNode | undefined }> = (
       value={{
         cancelRequest,
         genCodeFromImage,
+        image,
         isStreaming,
         htmlGenerated,
+        setImage,
         step,
       }}
     >
